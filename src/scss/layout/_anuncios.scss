@@ -4,6 +4,12 @@
     }
 }
 
+.precio {
+    color: $verde;
+    font-weight: $bold;
+    font-size: 3rem;
+}
+
 .anuncio {
     background-color: lighten($gris, 5);
     border: 1px solid darken($gris, 10);
@@ -15,17 +21,13 @@
     h3, p {
         margin: 0;
     }
-    .precio {
-        color: $verde;
-        font-weight: $bold;
-        font-size: 3rem;
-    }
 }
 
 .iconos-caracteristicas {
     display: flex;
     list-style: none;
     padding: 0;
+    max-width: 40rem;
 
     li {
         flex: 1;
