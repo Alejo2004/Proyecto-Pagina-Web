@@ -8,7 +8,8 @@
         color: $gris;
     }
 
-    .anuncio{
+    .anuncio,
+    .resumen-propiedad{
         background-color: $grisOscuro;
         border: 1px solid $grisOscuro;
 
@@ -18,8 +19,29 @@
         .icono{
             filter: invert(100%);
         }
+        
+    }
+    
+    transition: background-color .3s ease;
+
+    .texto-nosotros blockquote {
+        color: $blanco;
     }
 
-    transition: all .3s ease-in;
+    .formulario{
+        label,
+        legend,
+        p{
+            color: $gris;
+        }
+
+        input:not([type="submit"]),
+            textarea,
+            select {
+               background-color: $grisOscuro;
+               color: $blanco;
+               border: 1px solid $grisOscuro;
+            }
+    }
 
 }
