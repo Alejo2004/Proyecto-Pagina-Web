@@ -1,7 +1,7 @@
 <?php
-    $inicio = true;
-    //añadiendo la barra de navegacion con php
-    include './includes/templates/header.php';
+    require 'includes/funciones.php';
+    //añadiendo la barra de navegacion con php por medios de funciones y templates
+    incluirTemplate('header', $inicio = true);
     
 ?>
 
@@ -204,5 +204,5 @@
     
 <?php
     //añadiendo la barra de navegacion con php
-    include './includes/templates/footer.php';
+    incluirTemplate('footer');
 ?>

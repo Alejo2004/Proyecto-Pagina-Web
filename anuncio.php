@@ -1,7 +1,10 @@
 <?php
-    //añadiendo la barra de navegacion con php
-    include './includes/templates/header.php';
+    require 'includes/funciones.php';
+    //añadiendo la barra de navegacion con php por medios de funciones y templates
+    incluirTemplate('header');
+    
 ?>
+
     <main class="contenedor seccion contenido-centrado">
         <h1>Casa en Venta Frente al Bosque</h1>
         
@@ -36,5 +39,5 @@
 
     <?php
     //añadiendo la barra de navegacion con php
-    include './includes/templates/footer.php';
+    incluirTemplate('footer');
 ?>

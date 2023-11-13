@@ -8,7 +8,7 @@
 </head>
 <body>
     
-    <header class="header <?php echo isset($inicio) ? 'inicio' : '';?>"> <!-- Validando si la variable inicio esta declarada -->
+    <header class="header <?php echo $inicio ? 'inicio' : '';?>"> <!-- Validando si la variable inicio esta declarada -->
         <div class="contenedor contenido-header">
             <div class="barra">
                 <a href="/">
@@ -29,7 +29,7 @@
                 
 
             </div>
-            <?php if (isset($inicio)) { ?>
+            <?php if ($inicio) { ?>
                 <h1>Venta de Casas y Departamentos Exclusivos de Lujo</h1>
             <?php } ?>
 
