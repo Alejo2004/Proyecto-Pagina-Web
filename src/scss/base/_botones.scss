@@ -9,3 +9,12 @@
 .boton-verde {
     @include boton($verde, inline-block);
 }
+
+//botones para las acciones de la tabla en propiedades
+.boton-rojo-block{
+    @include boton($rojo, block)
+}
+
+.boton-verde-block{
+    @include boton($verde, block)
+}
