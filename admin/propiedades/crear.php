@@ -37,9 +37,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $wc = mysqli_real_escape_string($db,$_POST['wc']);
     $estacionamiento = mysqli_real_escape_string($db,$_POST['estacionamiento']);
     $vendedorId = mysqli_real_escape_string($db,$_POST['vendedor']);
-    $creado = date('Y/m/d');
+    $creado = date("Y-m-d");
 
-
+    // echo "<pre>";
+    // var_dump($creado);
+    // echo "</pre>";
+    // exit;
     //Asignando files hacia una variable
     $imagen = $_FILES['imagen'];
     if (!$titulo) {
@@ -94,8 +97,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         move_uploaded_file($imagen['tmp_name'], $carpetaImagenes . $nombreImagen );
 
         //insertar en la base de datos
-        $query = "INSERT INTO propiedades (titulo, precio,imagen, descripcion,habitaciones,wc,estacionamiento,creado,vendedores_id) VALUES ('$titulo','$precio', '$nombreImagen', '$descripcion','$habitaciones','$wc','$estacionamiento',$creado,'$vendedorId')";
-        //echo $query;
+        $query = "INSERT INTO propiedades (titulo, precio,imagen, descripcion,habitaciones,wc,estacionamiento,creado,vendedores_id) VALUES ('$titulo','$precio', '$nombreImagen', '$descripcion','$habitaciones','$wc','$estacionamiento','$creado','$vendedorId')";
+        // echo $query;
+        // exit;
 
         $resultado = mysqli_query($db, $query);
 
