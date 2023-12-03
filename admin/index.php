@@ -1,4 +1,10 @@
 <?php
+    
+    require '../includes/funciones.php';
+    $auth = estaAutenticado();
+    if (!$auth) {
+        header('location: /');
+    }
     //importamos la conexion Base de datos
     require '../includes/config/database.php';
     $db = conectarDB();
@@ -35,7 +41,6 @@
     }
 
     //añadiendo la barra de navegacion con php por medios de funciones y templates
-    require '../includes/funciones.php';
     incluirTemplate('header');
 ?>
 

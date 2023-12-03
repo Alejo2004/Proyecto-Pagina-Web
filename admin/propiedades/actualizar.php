@@ -1,4 +1,10 @@
 <?php
+    require '../../includes/funciones.php';
+    $auth = estaAutenticado();
+    if (!$auth) {
+        header('location: /');
+    }
+
     //validar la URL por Id valido
     $id = $_GET['id'];
     $id = filter_var($id, FILTER_VALIDATE_INT); //Validando si el id es numerico....
@@ -133,7 +139,7 @@
         }
     }
 }
-    require '../../includes/funciones.php';
+   
     //añadiendo la barra de navegacion con php por medios de funciones y templates
     incluirTemplate('header');
 

@@ -1,4 +1,11 @@
 <?php
+ require '../../includes/funciones.php';
+ $auth = estaAutenticado();
+ if (!$auth) {
+     header('location: /');
+ }
+
+
 //Base de datos
 require '../../includes/config/database.php';
 $db = conectarDB();
@@ -111,7 +118,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 }
-require '../../includes/funciones.php';
+
 //añadiendo la barra de navegacion con php por medios de funciones y templates
 incluirTemplate('header');
 
