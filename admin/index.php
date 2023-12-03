@@ -1,24 +1,29 @@
 <?php
-//importamos la conexion
-//Base de datos
-require '../includes/config/database.php';
-$db = conectarDB();
+    //importamos la conexion Base de datos
+    require '../includes/config/database.php';
+    $db = conectarDB();
 
-//escribimos la consulta query o sql
-$query = "SELECT * FROM propiedades";
+    //escribimos la consulta query o sql
+    $query = "SELECT * FROM propiedades";
 
-//consultamos la base de datos
-$resultadoConsulta = mysqli_query($db, $query);
+    //consultamos la base de datos
+    $resultadoConsulta = mysqli_query($db, $query);
 
-//muestra mensaje condicional
-$resultado = $_GET['resultado'] ?? null; //busca si llega algun parametro de validacion, igualdad al isset()
-require '../includes/funciones.php';
-//añadiendo la barra de navegacion con php por medios de funciones y templates
-incluirTemplate('header');
-// echo "<pre>";
-// var_dump($resultado);
-// echo "</pre>";
+    //muestra mensaje condicional de agregado o modificado
+    $resultado = $_GET['resultado'] ?? null; //busca si llega algun parametro de validacion, igualdad al isset()
 
+    if ($_SERVER['REQUEST_METHOD'] === $_POST) {
+        $id = $_POST['id'];
+        $id = filter_var($id, FILTER_VALIDATE_INT);
+
+        if ($id) {
+            $query = "DELETE FROM propiedades WHERE id = $id";
+        }
+    }
+
+    //añadiendo la barra de navegacion con php por medios de funciones y templates
+    require '../includes/funciones.php';
+    incluirTemplate('header');
 ?>
 
 
@@ -45,15 +50,19 @@ incluirTemplate('header');
         <!-- Mostandro resultados -->
         <tbody>
 
-            <?php while ($propiedades = mysqli_fetch_assoc($resultadoConsulta)) : ?>
+            <?php while ($propiedad = mysqli_fetch_assoc($resultadoConsulta)) : ?>
 
                 <tr>
-                    <td><?php echo $propiedades['id']; ?> </td>
-                    <td><?php echo $propiedades['titulo']; ?></td>
-                    <td> <img src="/imagenes/<?php echo $propiedades['imagen']; ?>" alt="" class="imagen-tabla"> </td>
-                    <td>$ <?php echo $propiedades['precio']; ?></td>
+                    <td><?php echo $propiedad['id']; ?> </td>
+                    <td><?php echo $propiedad['titulo']; ?></td>
+                    <td> <img src="/imagenes/<?php echo $propiedad['imagen']; ?>" alt="" class="imagen-tabla"> </td>
+                    <td>$ <?php echo $propiedad['precio']; ?></td>
                     <td>
-                        <a href="#" class="boton-rojo-block">Eliminar </a>
+                        <form action="" method="post" class="w-100">
+                            <input type="hidden" name="id" value="<?php echo $propiedad['id'];?>">
+                            <input type="submit" class="boton-rojo-block" value="Eliminar">
+                        </form>
+
                         <a href="/admin/propiedades/actualizar.php?id=<?php echo $propiedades['id']; ?>" class="boton-amarillo-block">Actualizar</a>
 
                     </td>

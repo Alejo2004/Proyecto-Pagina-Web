@@ -12,9 +12,10 @@
 
 //botones para las acciones de la tabla en propiedades
 .boton-rojo-block{
-    @include boton($rojo, block)
+    @include boton($rojo, block);
+    width: 100%
 }
 
 .boton-verde-block{
-    @include boton($verde, block)
+    @include boton($verde, block);
 }
