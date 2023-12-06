@@ -2,7 +2,6 @@
     if (!isset($_SESSION)) {
         session_start();
     }
-
     $auth = $_SESSION['login'] ?? null;
 ?>
 
@@ -28,12 +27,18 @@
                 <div class="derecha">
                     <img class="dark-mode-boton" src="/build/img/dark-mode.svg" alt="">
                     <nav class="navegacion">
+                        <?php if(!$auth):?>
                         <a href="nosotros.php">Nosotros</a>
                         <a href="anuncios.php">Anuncios</a>
                         <a href="blog.php">Blog</a>
                         <a href="contacto.php">Contacto</a>
+                        <?php endif;?>    
 
                         <?php if($auth):?>
+                            <a href="../../nosotros.php">Nosotros</a>
+                            <a href="../../anuncios.php">Anuncios</a>
+                            <a href="../../blog.php">Blog</a>
+                            <a href="../../contacto.php">Contacto</a>
                             <a href="../../cerrar-sesion.php">Cerrar Session</a> 
                         <?php endif;?>    
                     </nav>
