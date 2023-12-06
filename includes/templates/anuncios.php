@@ -9,9 +9,6 @@
 
 
 ?>
-
-
-
 <div class="contenedor-anuncios">
     <?php while($propiedad = mysqli_fetch_assoc($resultado)):?>
 

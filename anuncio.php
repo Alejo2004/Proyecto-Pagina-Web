@@ -11,7 +11,7 @@
     require 'includes/config/database.php';
     $db = conectarDB();
     //consultar
-    $query = "SELECT * FROM propiedades where id = $id";
+    $query = "SELECT titulo,precio,imagen,descripcion,habitaciones,wc,estacionamiento,nombre FROM propiedades INNER JOIN vendedores ON propiedades.vendedores_id = vendedores.id WHERE propiedades.id = $id";
     //leer los resultados
     $resultado = mysqli_query($db, $query);
 
@@ -33,7 +33,7 @@
     <img loading="lazy" src="/imagenes/<?php echo $propiedad['imagen']?>" alt="anuncio">
 
 
-    <div class="resumen-propiedad">
+    <div class="resumen-propiedad anuncio">
         <p class="precio">$<?php echo $propiedad['precio']?></p>
         <ul class="iconos-caracteristicas">
             <li>
@@ -51,6 +51,8 @@
         </ul>
 
         <p><?php echo $propiedad['descripcion']?></p>
+        <br>
+        <p>Vendedor a cargo: <?php echo $propiedad['nombre']?></p>
 
     </div>
 </main>

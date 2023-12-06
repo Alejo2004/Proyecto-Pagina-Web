@@ -10,11 +10,10 @@
     $db = conectarDB();
 
     //escribimos la consulta query o sql
-    $query = "SELECT * FROM propiedades";
+    $query = "SELECT p.id,p.titulo,p.precio,p.imagen,p.descripcion,p.habitaciones,p.wc,p.estacionamiento,nombre FROM propiedades AS p INNER JOIN vendedores AS v ON p.vendedores_id = v.id";
 
     //consultamos la base de datos
     $resultadoConsulta = mysqli_query($db, $query);
-
     //muestra mensaje condicional de agregado o modificado
     $resultado = $_GET['resultado'] ?? null; //busca si llega algun parametro de validacion, igualdad al isset()
 
@@ -55,6 +54,7 @@
         <p class="alerta exito"> Anuncio Eliminado Correctamente</p>
     <?php endif; ?>
     <a href="/admin/propiedades/crear.php" class="boton boton-verde">Nueva Propiedad</a>
+    <a href="/admin/vendedores/index.php" class="boton boton-verde">Nuevo Vendedor</a>
 
     <!-- Listando propiedades -->
     <table class="propiedades">
@@ -64,6 +64,7 @@
                 <th>Titulo</th>
                 <th>Imagen</th>
                 <th>Precio</th>
+                <th>Vendedor</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -77,6 +78,7 @@
                     <td><?php echo $propiedad['titulo']; ?></td>
                     <td> <img src="/imagenes/<?php echo $propiedad['imagen']; ?>" alt="" class="imagen-tabla"> </td>
                     <td>$ <?php echo $propiedad['precio']; ?></td>
+                    <td><?php echo $propiedad['nombre']; ?></td>
                     <td>
                         <form action="" method="post" class="w-100">
                             <input type="hidden" name="id" value="<?php echo $propiedad['id'];?>">
